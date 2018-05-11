@@ -182,7 +182,7 @@ class PresenceNode(polyinterface.Node):
     def checkPresence(self):
         if (self.scan):
             blueid = ':'.join(self.address[i:i+2] for i in range(0, len(self.address), 2)).upper()
-            result = bluetooth.lookup_name(blueid, timeout=10)
+            result = bluetooth.lookup_name(blueid, self.parent.polyConfig['shortPoll']-1)
             if (result != None):
                 LOGGER.debug(blueid + ': In range')
                 if (self.proximity < 5):
