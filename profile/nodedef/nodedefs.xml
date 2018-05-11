@@ -4,8 +4,8 @@
     <nodeDef id="presence_controller" nls="ctl">
         <editors />
         <sts>
-			<st id="ST" editor="bool" />
-		</sts>
+            <st id="ST" editor="bool" />
+        </sts>
         <cmds>
             <sends />
             <accepts>
