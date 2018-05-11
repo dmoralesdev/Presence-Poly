@@ -4,7 +4,7 @@
     "type": "python3",
     "executable": "presence-poly.py",
     "install": "install.sh",
-    "description": "a nodeserver to monitor proximity of devices for indoor GPS/presence",
+    "description": "a nodeserver to monitor proximity of devices for indoor positioning/presence",
     "notice": "The code here is provided as is, without guarantee, and shall not be used with illegal purposes",
     "shortPoll": "10",
     "longPoll": "60",
