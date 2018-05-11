@@ -1,0 +1,21 @@
+{
+    "name": "Presence-Poly",
+    "docs": "https://tbd",
+    "type": "python3",
+    "executable": "presence-poly.py",
+    "install": "install.sh",
+    "description": "a nodeserver to monitor proximity of devices for indoor GPS/presence",
+    "notice": "The code here is provided as is, without guarantee, and shall not be used with illegal purposes",
+    "shortPoll": "10",
+    "longPoll": "60",
+    "credits": [
+        {
+            "title": "Presence-Poly: a RPi bluetooth presence interface",
+            "author": "Diego Morales",
+            "version": "1.0.0",
+            "date": "May 8th, 2018",
+            "source": "https://github.com/dmoralesdev/Presence-Poly.git",
+            "license": "https://tbd"
+        }
+    ]
+}

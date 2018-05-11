@@ -1,0 +1,9 @@
+<editors>
+    <!-- Boolean -->
+    <editor id="bool">
+        <range uom="2" subset="0,1" />
+    </editor>
+    <editor id="proximity">
+        <range uom="56" subset="0-5" />
+    </editor>
+</editors>

@@ -1,0 +1,12 @@
+# presence_controller
+ND-presence_controller-NAME = Presence Controller
+CMD-ctl-DISCOVER-NAME = Discover
+CMD-ctl-UPDATE_PROFILE-NAME = Update Profile
+CMD-ctl-REMOVE_NOTICES_ALL-NAME = Remove Notices
+ST-ctl-ST-NAME = Presence Controller Online
+
+# presence_node
+ND-presence_node-NAME = Presence Node
+ST-pnode-ST-NAME = In Range
+ST-GV0-NAME = Proximity
+ST-GV1-NAME = Scanning
