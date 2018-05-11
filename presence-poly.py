@@ -106,9 +106,6 @@ class PresenceController(polyinterface.Controller):
         LOGGER.debug('Presence Controller stopped.')
 
     def check_params(self):
-        #add for testing
-        self.addCustomParam({'Mate 9': '7C:11:CB:BD:07:E6','iPhone': '48:BF:6B:1C:74:BD'})
-        
         # Remove all existing notices
         self.removeNoticesAll()
         
