@@ -229,6 +229,7 @@ class PresenceNode(polyinterface.Node):
         self.setOn('DON')
         
     def checkPresence(self):
+        tolerance = 3
         if (self.scan):
             blueid = ':'.join(self.address[i:i+2] for i in range(0, len(self.address), 2)).upper()
             btrssi = BluetoothRSSI(addr=blueid)
@@ -245,18 +246,23 @@ class PresenceNode(polyinterface.Node):
                     self.setInRange(2)
                 elif (result < -46):
                     self.setInRange(1)
-            else:
+            elif (self.faults < tolerance):
+                self.faults += 1
+                LOGGER.debug(blueid + ': Faults count: ' + str(self.faults))
+            elif (self.faults == tolerance):
                 LOGGER.debug(blueid + ': Out of range')
                 self.setOutRange()
             
     def setInRange(self,prox):
         self.setDriver('ST', 1)
         self.proximity = prox
+        self.faults = 0
         self.setDriver('GV0', self.proximity)
         
     def setOutRange(self):
         self.setDriver('ST', 0)
         self.proximity = 0
+        self.faults = 0
         self.setDriver('GV0', self.proximity)
     
     def setOn(self, command):
@@ -268,6 +274,7 @@ class PresenceNode(polyinterface.Node):
         self.setOutRange()
         self.setDriver('GV1', 1)
         self.scan = 1
+        self.faults = 0
 
     def setOff(self, command):
         """
@@ -278,6 +285,7 @@ class PresenceNode(polyinterface.Node):
         self.setOutRange()
         self.setDriver('GV1', 0)
         self.scan = 0
+        self.faults = 0
 
     def query(self):
         """
