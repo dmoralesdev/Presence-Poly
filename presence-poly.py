@@ -3,6 +3,10 @@ import polyinterface
 import sys
 import time
 import bluetooth
+import bluetooth._bluetooth as bt
+import struct
+import array
+import fcntl
 
 LOGGER = polyinterface.LOGGER
 """
@@ -137,7 +141,52 @@ class PresenceController(polyinterface.Controller):
         {'driver': 'ST', 'value': 0, 'uom': 2}
     ]
 
+class BluetoothRSSI(object):
 
+    def __init__(self, addr):
+        self.addr = addr
+        self.hci_sock = bt.hci_open_dev()
+        self.hci_fd = self.hci_sock.fileno()
+        self.bt_sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
+        self.bt_sock.settimeout(10)
+        self.connected = False
+        self.cmd_pkt = None
+
+    def prep_cmd_pkt(self):
+        """Prepares the command packet for requesting RSSI"""
+        reqstr = struct.pack(
+            "6sB17s", bt.str2ba(self.addr), bt.ACL_LINK, bytes("\0",'utf-8') * 17)
+        request = array.array("b", reqstr)
+        handle = fcntl.ioctl(self.hci_fd, bt.HCIGETCONNINFO, request, 1)
+        handle = struct.unpack("8xH14x", request.tostring())[0]
+        self.cmd_pkt = struct.pack('H', handle)
+
+    def connect(self):
+        """Connects to the Bluetooth address"""
+        self.bt_sock.connect_ex((self.addr, 1))  # PSM 1 - Service Discovery
+        self.connected = True
+
+    def get_rssi(self):
+        """Gets the current RSSI value.
+        @return: The RSSI value (float) or None if the device connection fails
+                 (i.e. the device is nowhere nearby).
+        """
+        try:
+            # Only do connection if not already connected
+            if not self.connected:
+                self.connect()
+            if self.cmd_pkt is None:
+                self.prep_cmd_pkt()
+            # Send command to request RSSI
+            rssi = bt.hci_send_req(
+                self.hci_sock, bt.OGF_STATUS_PARAM,
+                bt.OCF_READ_RSSI, bt.EVT_CMD_COMPLETE, 4, self.cmd_pkt)
+            rssi = struct.unpack('b', rssi[3:4])[0]
+            return rssi
+        except IOError:
+            # Happens if connection fails (e.g. device is not in range)
+            self.connected = False
+            return None
 
 class PresenceNode(polyinterface.Node):
     """
@@ -182,19 +231,24 @@ class PresenceNode(polyinterface.Node):
     def checkPresence(self):
         if (self.scan):
             blueid = ':'.join(self.address[i:i+2] for i in range(0, len(self.address), 2)).upper()
-            result = bluetooth.lookup_name(blueid, self.parent.polyConfig['shortPoll']-1)
+            btrssi = BluetoothRSSI(addr=blueid)
+            result = btrssi.get_rssi()
             if (result != None):
-                LOGGER.debug(blueid + ': In range')
-                if (self.proximity < 5):
-                    self.setInRange(self.proximity + 1)
-                else:
-                    self.setInRange(self.proximity)
-            elif (result == None and self.proximity > 1):
-                self.setInRange(self.proximity - 1)
-            elif (result == None and self.proximity == 1):
+                LOGGER.debug(blueid + ': In range. RSSI: ' + str(result))
+                if (result >=0):
+                    self.setInRange(5)
+                elif (result < 0 and result >= -15):
+                    self.setInRange(4)
+                elif (result < -16 and result >= -30):
+                    self.setInRange(3)
+                elif (result < -31 and result >= -45):
+                    self.setInRange(2)
+                elif (result < -46):
+                    self.setInRange(1)
+            else:
                 LOGGER.debug(blueid + ': Out of range')
                 self.setOutRange()
-
+            
     def setInRange(self,prox):
         self.setDriver('ST', 1)
         self.proximity = prox

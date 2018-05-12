@@ -12,7 +12,14 @@ Each node will have 3 values: In Range, Proximity, and Scanning
 2. Proximity: Value from 0 (not In Range) to 5 (Full signal)
 3. Scanning: True or False to allow the node to "sleep" in case you want to temporarily disable a node (the value gets reset after a restart)
 
-###Disclaimer: The Proximity feature is not based on RSSI for bluetooth (as this would require to connect to each bluetooth device), but instead on the number of failed attempts to find the device during scanning. A node (device) who stays longer on a Proximity:5 means its more likely to be in close real life proximity to the RPi.
+### UPDATE v. 1.5! Now proximity is based on RSSI. You can check the original value in the NodeServer logs, but this is basically getting translated to a more usable value. The ranges go like this:
+
+1. Proximity 5 -> RSSI 0 (highest value which means the device is as close as it can be to the RPi)
+2. Proximity 4 -> RSSI -1 to RSSI -15
+3. Proximity 3 -> RSSI -16 to RSSI -30
+4. Proximity 2 -> RSSI -31 to RSSI -45
+5. Proximity 1 -> RSSI -45 and beyond
+
 
 One of the coolest features of Presence-Poly is that it can be installed into as many RPis (w/Polyglot) as needed in order to create a "network" of monitoring devices to allow evaluations via ISY programs such as "At Home", "Left Home", "In Kitchen", "In Bedroom". Your imagination is the limit! Please see this link for more info on this: https://forum.universal-devices.com/topic/24146-can-2-different-rpis-running-polyglot-connect-to-the-same-isy/
 
