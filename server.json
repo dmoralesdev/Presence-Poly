@@ -6,13 +6,13 @@
     "install": "install.sh",
     "description": "A Polyglot Nodeserver to monitor proximity of devices for indoor positioning/presence",
     "notice": "The code here is provided as is, without guarantee, and shall not be used with illegal purposes",
-    "shortPoll": "10",
+    "shortPoll": "5",
     "longPoll": "60",
     "credits": [
         {
             "title": "Presence-Poly: a RPi bluetooth presence interface",
             "author": "Diego Morales",
-            "version": "1.5.3",
+            "version": "1.5.4",
             "date": "May 8th, 2018",
             "source": "https://github.com/dmoralesdev/Presence-Poly.git",
             "license": "https://github.com/dmoralesdev/Presence-Poly/blob/master/LICENSE"
