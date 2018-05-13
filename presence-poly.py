@@ -235,15 +235,15 @@ class PresenceNode(polyinterface.Node):
             result = btrssi.get_rssi()
             if (result != None):
                 LOGGER.debug(blueid + ': In range. RSSI: ' + str(result))
-                if (result >=0):
+                if (result >=-5):
                     self.setInRange(5)
-                elif (result < 0 and result >= -15):
+                elif (result < -5 and result >= -20):
                     self.setInRange(4)
-                elif (result < -16 and result >= -30):
+                elif (result < -20 and result >= -35):
                     self.setInRange(3)
-                elif (result < -31 and result >= -45):
+                elif (result < -35 and result >= -50):
                     self.setInRange(2)
-                elif (result < -46):
+                elif (result < -50):
                     self.setInRange(1)
             elif (self.proximity > 1):
                 self.setInRange(self.proximity - 1)
