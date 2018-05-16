@@ -6,4 +6,7 @@
     <editor id="proximity">
         <range uom="56" subset="0-5" />
     </editor>
+    <editor id="strength">
+        <range uom="56" subset="0-5" />
+    </editor>
 </editors>

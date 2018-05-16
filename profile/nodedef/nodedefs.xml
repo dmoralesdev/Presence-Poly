@@ -1,6 +1,6 @@
 <nodeDefs>
     <!-- NODE DEF from 5.0 document http://wiki.universal-devices.com/index.php?title=V50_MAIN -->
-    <!-- controller -->
+    <!-- Presence Controller -->
     <nodeDef id="presence_controller" nls="ctl">
         <editors />
         <sts>
@@ -15,12 +15,28 @@
             </accepts>
         </cmds>
     </nodeDef>
-	<!-- mynodetype -->
-    <nodeDef id="presence_node" nls="pnode">
+	<!-- Bluetooth Node -->
+    <nodeDef id="bluetooth_node" nls="bnode">
         <editors />
         <sts>
             <st id="ST" editor="bool" />
             <st id="GV0" editor="proximity" />
+            <st id="GV1" editor="bool" />
+        </sts>
+        <cmds>
+            <sends />
+            <accepts>
+                <cmd id="DON" />
+                <cmd id="DOF" />
+            </accepts>
+        </cmds>
+    </nodeDef>
+    <!-- Network Node -->
+    <nodeDef id="network_node" nls="nnode">
+        <editors />
+        <sts>
+            <st id="ST" editor="bool" />
+            <st id="GV0" editor="strength" />
             <st id="GV1" editor="bool" />
         </sts>
         <cmds>
