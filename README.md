@@ -1,8 +1,7 @@
 # Presence-Poly NodeServer v2
 
-## IMPORTANT NOTE - Upgrading from 1.x to 2.0
-### If you are upgrading from any previous version of Presence-Poly, please proceed to "Update" normally, and then make sure to delete any existing node from the NodeServer Nodes section, followed by a NodeServer and Admin Console "Restart" (in that order). The changes on this version include the addition/redefinition of node types.
-
+> ### IMPORTANT NOTE - Upgrading from 1.x to 2.0
+> ### If you are upgrading from any previous version of Presence-Poly, please proceed to "Update" normally, and then make sure to delete any existing node from the NodeServer Nodes section, followed by a NodeServer and Admin Console "Restart" (in that order). The changes on this version include the addition/redefinition of node types.
 
 This is the Presence-Poly for the [Universal Devices ISY994i](https://www.universal-devices.com/residential/ISY) [Polyglot interface](http://www.universal-devices.com/developers/polyglot/docs/) with  [Polyglot V2](https://github.com/Einstein42/udi-polyglotv2)
 (c) 2018 Diego Morales
@@ -50,14 +49,13 @@ One of the coolest features of Presence-Poly is that it can be installed into as
 3. Click Add NodeServer in the NodeServer menu of Polyglot, and choose an available slot
 4. Go to the NodeServer details from the dashboard, and then click on Configuration
 5. Add as many devices you need to monitor in the form
-    Bluetooth:
+   * Bluetooth:
         - Key: Name of the device (accepts spaces)
         - Value: Bluetooth ID of your device (in the form of DF:34:45:D3:B1:E9)
-    Network:
+   * Network:
         - Key: Name of the device (accepts spaces)
-        - Value: IP address of your device (in the form of 192.168.0.1)
-        
-    *No 2 keys can be the same, so if you are monitoring a device both on bluetooth and network, the key (name) would need to be different for each type. For example, you could append the type to the name like: "iPhone-Bluetooth", "iPhone-Network"
+        - Value: IP address of your device (in the form of 192.168.0.1)       
+   * No 2 keys can be the same, so if you are monitoring a device both on bluetooth and network, the key (name) would need to be different for each type. For example, you could append the type to the name like: "iPhone-Bluetooth", "iPhone-Network"
 6. Restart the NodeServer
 7. Close/Open your Admin Console and you should now see a "Presence Controller" node, with all the node children you created
 
