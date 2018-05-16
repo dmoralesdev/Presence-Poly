@@ -6,7 +6,7 @@ MIT license.
 
 There are 2 node types on Presence-Poly: Presence and Network
 
-##Bluetooth Node:
+## Bluetooth Node:
 This node type is intended to use the onboard Bluetooth support that comes in a Raspberry Pi 3 to monitor for the "presence" of other bluetooth devices. This can help determine indoor positioning with respect to your RPi. In theory, this should also work with RPi 1-2 with an external bluetooth adapter, but it has not been tested under those conditions (please let me me know if it works).
 
 Each node will have 3 values: In Range, Proximity, and Scanning
@@ -24,7 +24,7 @@ Proximity is based on RSSI. You can check the original value in the NodeServer l
 5. Proximity 1 -> RSSI -36 and beyond
 6. Proximity 0 -> Out of range
 
-##Network Node:
+## Network Node:
 This node type is intended to monitor for the "presence" of a device inside of the same network the RPi is connected to. It does this by sending 1 ICMP Ping package to the IP of the monitored device.
 
 Each node will have 3 values: On Network, Strength, and Scanning
