@@ -35,7 +35,7 @@ Each node will have 3 values: On Network, Strength, and Scanning
 
 Strength is based on the number of consecutive successful pings. It will decrease with each dropped ping package until it reaches 0, which means the device is off the network. It could also be seen as an "inverted fault counter".
 
-
+## Multiple RPis:
 One of the coolest features of Presence-Poly is that it can be installed into as many RPis (w/Polyglot) as needed in order to create a "network" of monitoring devices to allow evaluations via ISY programs such as "At Home", "Left Home", "In Kitchen", "In Bedroom". Your imagination is the limit! Please see this link for more info on this: https://forum.universal-devices.com/topic/24146-can-2-different-rpis-running-polyglot-connect-to-the-same-isy/
 
 ## Installation
