@@ -50,14 +50,14 @@ One of the coolest features of Presence-Poly is that it can be installed into as
 3. Click Add NodeServer in the NodeServer menu of Polyglot, and choose an available slot
 4. Go to the NodeServer details from the dashboard, and then click on Configuration
 5. Add as many devices you need to monitor in the form
-    Bluetooth:
+..* Bluetooth:
         - Key: Name of the device (accepts spaces)
         - Value: Bluetooth ID of your device (in the form of DF:34:45:D3:B1:E9)
-    Network:
+..* Network:
         - Key: Name of the device (accepts spaces)
         - Value: IP address of your device (in the form of 192.168.0.1)
         
-    *No 2 keys can be the same, so if you are monitoring a device both on bluetooth and network, the key (name) would need to be different for each type. For example, you could append the type to the name like: "iPhone-Bluetooth", "iPhone-Network"
+..* No 2 keys can be the same, so if you are monitoring a device both on bluetooth and network, the key (name) would need to be different for each type. For example, you could append the type to the name like: "iPhone-Bluetooth", "iPhone-Network"
 6. Restart the NodeServer
 7. Close/Open your Admin Console and you should now see a "Presence Controller" node, with all the node children you created
 
