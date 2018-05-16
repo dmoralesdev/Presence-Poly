@@ -1,5 +1,9 @@
 # Presence-Poly NodeServer
 
+## IMPORTANT NOTE - Upgrading from 1.x to 2.0
+### If you are upgrading from any previous version of Presence-Poly, please proceed to "Update" normally, and then make sure to delete any existing node from the NodeServer Nodes section, followed by a NodeServer and Admin Console "Restart" (in that order). The changes on this version include the addition/redefinition of node types.
+
+
 This is the Presence-Poly for the [Universal Devices ISY994i](https://www.universal-devices.com/residential/ISY) [Polyglot interface](http://www.universal-devices.com/developers/polyglot/docs/) with  [Polyglot V2](https://github.com/Einstein42/udi-polyglotv2)
 (c) 2018 Diego Morales
 MIT license.
