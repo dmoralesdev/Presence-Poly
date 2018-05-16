@@ -4,9 +4,6 @@ This is the Presence-Poly for the [Universal Devices ISY994i](https://www.univer
 (c) 2018 Diego Morales
 MIT license.
 
-## IMPORTANT NOTE - Upgrading from 1.x to 2.0
-### If you are upgrading from any previous version of Presence-Poly, please proceed to "Update" normally, and then make sure to delete any existing node from the NodeServer Nodes section, followed by a NodeServer and Admin Console "Restart" (in that order). The changes on this version include the addition/redefinition of node types.
-
 There are 2 node types on Presence-Poly: Presence and Network
 
 ## Bluetooth Node:
