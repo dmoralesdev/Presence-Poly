@@ -7,7 +7,7 @@ This is the Presence-Poly for the [Universal Devices ISY994i](https://www.univer
 (c) 2018 Diego Morales
 MIT license.
 
-There are 2 node types on Presence-Poly: Presence and Network
+There are 2 node types on Presence-Poly: Bluetooth and Network
 
 ## Bluetooth Node:
 This node type is intended to use the onboard Bluetooth support that comes in a Raspberry Pi 3 to monitor for the "presence" of other bluetooth devices. This can help determine indoor positioning with respect to your RPi. In theory, this should also work with RPi 1-2 with an external bluetooth adapter, but it has not been tested under those conditions (please let me me know if it works).
