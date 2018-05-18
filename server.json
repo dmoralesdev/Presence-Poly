@@ -12,7 +12,7 @@
         {
             "title": "Presence-Poly: a RPi bluetooth and network presence monitoring server",
             "author": "Diego Morales",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "date": "May 8th, 2018",
             "source": "https://github.com/dmoralesdev/Presence-Poly.git",
             "license": "https://github.com/dmoralesdev/Presence-Poly/blob/master/LICENSE"
