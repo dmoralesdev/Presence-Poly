@@ -130,6 +130,7 @@ class BluetoothNode(polyinterface.Node):
         super(BluetoothNode, self).__init__(controller, primary, address, name)
         self.blueid = ':'.join(self.address[i:i+2] for i in range(0, len(self.address), 2)).upper()
         self.scan = 1
+        self.proximity = 0
 
     def start(self):
         self.setOn('DON')
@@ -216,6 +217,7 @@ class NetworkNode(polyinterface.Node):
         super(NetworkNode, self).__init__(controller, primary, address, name)
         self.ip = ipaddress
         self.scan = 1
+        self.strength = 0
         
     def start(self):
         self.setOn('DON')
