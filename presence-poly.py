@@ -16,17 +16,22 @@ class PresenceController(polyinterface.Controller):
     def __init__(self, polyglot):
         super(PresenceController, self).__init__(polyglot)
         self.name = 'Presence Controller'
-
+        self.firstRun = True
+        
     def start(self):
         LOGGER.info('Presence Controller started.')
         self.check_params()
         self.discover()
-
+        self.setDriver('ST', 1)
+        
     def shortPoll(self):
         #This is where the updates to each node happen
         for node in self.nodes:
             self.nodes[node].update()
-
+        if self.firstRun:
+            self.query()
+            self.firstRun = False
+            
     def longPoll(self):
         #Not used
         pass
@@ -53,6 +58,7 @@ class PresenceController(polyinterface.Controller):
         LOGGER.info('Deleted')
 
     def stop(self):
+        self.setDriver('ST', 0)
         LOGGER.debug('Presence Controller stopped.')
 
     def check_params(self):
